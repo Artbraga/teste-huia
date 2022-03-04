@@ -1,0 +1,10 @@
+<div>
+    <div class="banner">
+        <h2>Huia - Teste Desenvolvimento Front-End</h2>
+    </div>
+</div>
+<div class="lista">
+    <ng-container *ngFor="let produto of produtos">
+        <app-item-lista [produto]="produto"></app-item-lista>
+    </ng-container>
+</div>
