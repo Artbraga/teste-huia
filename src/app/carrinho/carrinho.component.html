@@ -1,1 +1,5 @@
-<p>carrinho works!</p>
+<div class="carrinho-contanier">
+    <ng-container *ngFor="let pc of produtosCarrinho">
+        {{pc.produto.nome}}
+    </ng-container>
+</div>

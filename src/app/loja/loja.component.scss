@@ -1,18 +1,38 @@
 .banner {
     width: 100%;
-    height: 80px;
+    height: 150px;
     display: flex;
-    background-image: url('https://sm.ign.com/ign_pt/screenshot/default/capa_b14y.jpg');
     background-position: center center;
-    opacity: 0.8;
+    margin-bottom: 25px;
+    background:
+           /* top, transparent black, faked with gradient */ 
+           linear-gradient(
+             rgba(0, 0, 0, 0.7), 
+             rgba(0, 0, 0, 0.7)
+           ),
+           /* bottom, image */
+           url('https://sm.ign.com/ign_pt/screenshot/default/capa_b14y.jpg');
     h2 {
         margin: auto;
         color: white;
-        font-family: 'Roboto';
-        font-size: 2em;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
     }
 }
-
 .lista {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.produto {
+    width: 300px;
+}
+
+@media (max-width: 750px) {
+    .produto {
+        width: 100% !important;
+    }
 }

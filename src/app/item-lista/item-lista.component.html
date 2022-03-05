@@ -1,4 +1,16 @@
 <div class="produto">
     <img src="{{produto.imagem}}" alt="">
-    <span>{{produto.nome}}</span>    
+    <div class="card">
+        <span class="titulo">{{produto.nome}}</span>
+        <span class="descricao">{{produto.descricao}}</span>
+        <div class="avaliacao">
+            <span class="estrelas">
+                <ng-container  *ngFor="let number of [1,2,3,4,5]">
+                    <span class="{{number <= produto.nota ? 'fa fa-star': 'fa-regular fa-star'}}"></span>
+                </ng-container>
+            </span>
+            <span class="preco">R$ {{produto.preco}}</span>
+        </div>
+    </div>
+    <button (click)="adicionar()">adicionar ao carrinho</button>
 </div>
