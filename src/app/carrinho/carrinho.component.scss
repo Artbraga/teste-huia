@@ -1,0 +1,104 @@
+.fa-cart-shopping:before {
+    color: #60a12d;
+    padding-right: 10px;
+}
+h2 {
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 39px;
+    color: black;
+    margin: 0;
+    height: 40px;
+    font-family: 'Poppins'!important;
+}
+.carrinho-contanier {
+    background-color: white;
+    padding: 15px 25px;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-flow: column;
+    
+    label {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        font-family: "Poppins" !important;
+    }
+    input {
+        width: 100%;
+        border: none;
+        padding-bottom: 7px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+        &::placeholder {
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 18px;
+            color: rgba(0, 0, 0, 0.4);
+            font-family: "Poppins" !important;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.produtos-container {
+    flex-grow: 1;
+}
+.total-container {
+    
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    padding-top: 30px;
+    .row-total {
+        display: flex;
+        padding-bottom: 10px;
+    }
+    .subtotal {
+        width: 50%;
+        display: grid;
+        span {
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 21px;
+            color: #434343;
+            font-family: "Poppins" !important;
+
+            &.valor {
+                font-size: 16px;
+                line-height: 24px;
+                color: black;
+            }
+        }
+    }
+    .total {
+        width: 100%;
+        display: grid;
+        span {
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 27px;
+            color: #434343;
+            font-family: "Poppins" !important;
+            &.valor {
+                font-size: 20px;
+                line-height: 41px;
+                color: black;
+            }
+        }
+    }
+}
+button {
+    width: 300px;
+    background-color: #6b5995;
+    color: white;
+    height: 52px;
+    text-transform: uppercase;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 10px;
+}

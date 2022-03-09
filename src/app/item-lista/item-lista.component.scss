@@ -1,5 +1,6 @@
 .produto {
     display: grid;
+    padding-bottom: 20px;
     img {
         width: 300px;
         height: 164px;
@@ -10,12 +11,12 @@
 .card {
     width: 300px;
     background-color: white;
-    padding: 20px 30px;
+    padding: 15px 30px;
     display: grid;
     .avaliacao {
         display: flex;
         justify-content: space-between;
-        padding: 12px 0;
+        padding-top: 12px;
     }
 }
 button {
@@ -32,22 +33,20 @@ button {
 } 
 
 span {
-    &.titulo {
-        font-weight: bold;
-        font-size: 19px;
-        line-height: 28px;
-    }
     &.descricao {
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 18px;
         color: #6B6B6B;
+        &.closed {
+            max-height: 40px;
+            overflow: hidden;
+        }
     }
     &.preco {
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 24px;
         color: #2F2F2F;
+    }
+    &.ver-mais {
+        cursor: pointer;
+        font-size: 12px;
+        text-decoration: underline;
     }
 }
 

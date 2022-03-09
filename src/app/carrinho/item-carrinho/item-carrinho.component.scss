@@ -1,0 +1,39 @@
+.produto {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #F5F5F5;
+    img {
+        width: 120px;
+        height: 160px;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        min-width: 120px;
+    }
+}
+.infos {
+    display: grid;
+    padding: 5px;
+    .infos-produto {
+        display: grid;
+        padding: 10px;
+    }
+}
+
+.quantidades {
+    background-color: white;
+    position: relative;
+    display: inline-block;
+    margin-top: auto;    
+    margin-left: auto;    
+    height: 20px;
+    span {
+        padding: 0 4px;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 18px;
+        &.fa-solid {
+            cursor: pointer;
+        }
+    }   
+}
+

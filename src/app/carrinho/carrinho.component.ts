@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProdutoCarrinho } from '../model/produto-carrinho.model';
 import { Produto } from '../model/produto.model';
 import { ProdutoService } from '../services/produto.service';
+import { SedexService } from '../services/sedex.service';
 
 @Component({
     selector: 'app-carrinho',
@@ -9,37 +11,52 @@ import { ProdutoService } from '../services/produto.service';
     styleUrls: ['./carrinho.component.scss']
 })
 export class CarrinhoComponent implements OnInit {
+    maskCEP = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
-    produtosCarrinho: ProdutoCarrinho[] = [];
-    constructor(private produtoService: ProdutoService) { }
+    produtosCarrinho$: Observable<ProdutoCarrinho[]>;
+    cepEntrega: string;
+    valorFrete: number;
+    constructor(private produtoService: ProdutoService, private sedexService: SedexService) {
+        this.produtosCarrinho$ = this.produtoService.produtosCarrinho$.asObservable();
+    }
 
     ngOnInit(): void {
         this.produtoService.adicionarProdutoEvent.subscribe(produto => {
             this.adicionarProduto(produto);
         });
+        this.valorFrete = 15;
     }
 
 
     adicionarProduto(produto: Produto) {
-        let produtoCarrinho = this.produtosCarrinho.find(x => x.produto.id == produto.id);
-        if (produtoCarrinho != null) {
-            produtoCarrinho.quantidade += 1;
-        }
-        else {
-            produtoCarrinho = new ProdutoCarrinho();
-            produtoCarrinho.produto = produto;
-            produtoCarrinho.quantidade = 1;
-            this.produtosCarrinho = this.produtosCarrinho.concat(produtoCarrinho);
-        }
+        this.produtoService.adicionarAoCarrinho(produto);
     }
 
     removerProduto(produto: Produto) {
-        const produtoCarrinho = this.produtosCarrinho.find(x => x.produto.id == produto.id);
-        if (produtoCarrinho.quantidade == 1) {
-            this.produtosCarrinho = this.produtosCarrinho.filter(x => x.produto.id != produto.id);
+        this.produtoService.removerProduto(produto);
+    }
+
+    getSubtotal(): number {
+        return this.produtoService.getSubtotal();
+    }
+
+    getValorTotal(): number {
+        return this.getSubtotal() + this.valorFrete;
+    }
+
+    pesquisarCep() {
+        if (/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/.test(this.cepEntrega)) {
+            this.sedexService.calcularFrete(this.cepEntrega)
+                .subscribe(result => {
+                    console.log(result);
+                }, error => {
+                    console.log(error);
+                });
         }
-        else {
-            produtoCarrinho.quantidade -= 1;
-        }
+    }
+
+    tratarValor(preco: number): string {
+        let str = preco.toFixed(2).replace('.', ',');
+        return str;
     }
 }

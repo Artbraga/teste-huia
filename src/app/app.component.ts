@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { ProdutoService } from './services/produto.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'teste-huia';
+
+    get carrinhoVazio(): boolean {
+        return this.produtoService.carrinhoVazio();
+    }
+    
+    constructor(private produtoService: ProdutoService) { }
+
 }

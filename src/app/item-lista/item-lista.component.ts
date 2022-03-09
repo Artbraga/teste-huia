@@ -10,6 +10,7 @@ import { ProdutoService } from '../services/produto.service';
 export class ItemListaComponent implements OnInit {
 
     @Input() produto: Produto;
+    verMais = false;
     constructor(private produtoServoce: ProdutoService) { }
 
     ngOnInit(): void {
@@ -19,4 +20,9 @@ export class ItemListaComponent implements OnInit {
         this.produtoServoce.adicionarAoCarrinho(this.produto);
     }
 
+
+    tratarValor(preco: number): string {
+        let str = preco.toFixed(2).replace('.', ',');
+        return str;
+    }
 }

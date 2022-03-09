@@ -1,0 +1,17 @@
+<div class="produto">
+    <img src="{{produto.imagem}}" alt="">
+    <div class="infos">
+        <div class="infos-produto">
+            <span class="titulo">{{produto.nome}}</span>
+            <span class="descricao" placement="bottom" 
+                [ngbTooltip]="produto.descricao"
+                [openDelay]="1000" [closeDelay]="2000">{{getDescricaoReduzida()}}</span>
+        </div>
+        <div class="quantidades">
+            <span class="fa-solid fa-trash" *ngIf="produtoCarrinho.quantidade==1" (click)="clickQuantidade(false)"></span>
+            <span class="fa-solid fa-minus"*ngIf="produtoCarrinho.quantidade>1" (click)="clickQuantidade(false)"></span>
+            <span>{{produtoCarrinho.quantidade}}</span>
+            <span class="fa-solid fa-plus" (click)="clickQuantidade(true)"></span>
+        </div>
+    </div>
+</div>

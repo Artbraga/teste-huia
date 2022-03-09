@@ -16,9 +16,10 @@
         margin: auto;
         color: white;
         font-weight: bold;
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 38px;
+        line-height: 57px;
         text-align: center;
+        font-family: 'Poppins'!important;
     }
 }
 .lista {
@@ -29,6 +30,12 @@
 
 .produto {
     width: 300px;
+}
+
+.loja-container {
+    height: calc(100vh - 80px);
+    overflow: auto;
+    padding-right: 10px;
 }
 
 @media (max-width: 750px) {

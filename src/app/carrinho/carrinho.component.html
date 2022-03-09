@@ -1,5 +1,31 @@
+<h2><i class="fa-solid fa-cart-shopping"></i>Carrinho</h2>
 <div class="carrinho-contanier">
-    <ng-container *ngFor="let pc of produtosCarrinho">
-        {{pc.produto.nome}}
-    </ng-container>
+    <div>
+        <label>Calcular Frete:</label>
+        <input [textMask]="{mask: maskCEP}" placeholder="Digite aqui o CEP da entrega" [(ngModel)]="cepEntrega" (ngModelChange)="pesquisarCep()">
+    </div>
+    <div class="produtos-container">
+        <ng-container *ngFor="let pc of produtosCarrinho$ | async">
+            <app-item-carrinho [produtoCarrinho]="pc"
+            (adicionarProduto)="adicionarProduto($event)"
+            (removerProduto)="removerProduto($event)"></app-item-carrinho>
+        </ng-container>
+    </div>
+    <div class="total-container">
+        <div class="row-total">
+            <div class="subtotal">
+                <span>subtotal</span>
+                <span class="valor">R$ {{tratarValor(getSubtotal())}}</span>
+            </div>
+            <div class="subtotal">
+                <span>frete</span>
+                <span class="valor">R$ {{tratarValor(valorFrete)}}</span>
+            </div>
+        </div>
+        <div class="row-total total">
+            <span>total</span>
+            <span class="valor">R$ {{tratarValor(getValorTotal())}}</span>
+        </div>
+        <button>finalizar compra</button>
+    </div>
 </div>
