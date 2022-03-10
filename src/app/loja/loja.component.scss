@@ -29,7 +29,9 @@
 }
 
 .produto {
-    width: 300px;
+    width: 30%;
+    min-width: 300px;
+    max-width: 420px;
 }
 
 .loja-container {
@@ -52,5 +54,11 @@
             line-height: 30px;
             text-align: center;
         }
+    }
+}
+
+@media (max-width: 956px) and (min-width: 650px) {
+    .produto {
+        width: 50% !important;
     }
 }

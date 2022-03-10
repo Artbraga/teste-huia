@@ -2,17 +2,21 @@
     display: grid;
     padding-bottom: 20px;
     img {
-        width: 300px;
+        width: 100%;
+        min-width: 300px;
+        max-width: 420px;
         height: 164px;
         background-repeat: no-repeat;
         object-fit: cover;
     }
 }
 .card {
-    width: 300px;
     background-color: white;
     padding: 15px 30px;
     display: grid;
+    width: 100%;
+    min-width: 300px;
+    max-width: 420px;
     .avaliacao {
         display: flex;
         justify-content: space-between;
@@ -20,7 +24,7 @@
     }
 }
 button {
-    width: 300px;
+    width: 100%;
     background-color: #60A12D;
     color: white;
     height: 52px;
