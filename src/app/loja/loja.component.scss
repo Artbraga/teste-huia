@@ -38,8 +38,19 @@
     padding-right: 10px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 650px) {
     .produto {
         width: 100% !important;
+    }
+    .banner {
+        height: 125px;
+        h2 {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+        }
     }
 }

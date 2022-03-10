@@ -1,6 +1,18 @@
-<div class="{{carrinhoVazio ? 'col-md-12' : 'col-xs-12 col-sm-8 col-md-9' }}">
-    <app-loja></app-loja>
-</div>
-<div class="col-xs-12 col-sm-4 col-md-3" [hidden]="carrinhoVazio">
-    <app-carrinho></app-carrinho>
+<div class="container-geral">
+    <div class="{{carrinhoVazio ? 'col-md-12' : 'col-xs-12 col-sm-8 col-md-9' }} {{mobile ? 'mobile' : ''}}">
+        <app-loja></app-loja>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3 {{mobile && carrinhoAberto ? 'aberto' : ''}}" [hidden]="carrinhoVazio || (mobile && !carrinhoAberto)">
+        <app-carrinho></app-carrinho>
+        <i class="fa-solid fa-xmark close" *ngIf="mobile && carrinhoAberto" (click)="carrinhoAberto = false"></i>
+    </div>
+    <div class="carrinho" *ngIf="mobile && !carrinhoVazio && !carrinhoAberto" (click)="carrinhoAberto = true">
+        <h2><i class="fa-solid fa-cart-shopping"></i>Carrinho</h2>
+        <div>
+            <div class="row-total total">
+                <span>total</span>
+                <span class="valor">R$ {{tratarValor(getValorTotal())}}</span>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,3 +1,6 @@
+.container-geral {
+    background: #F1F1F1;
+}
 .fa-cart-shopping:before {
     color: #60a12d;
     padding-right: 10px;
@@ -101,4 +104,10 @@ button {
     line-height: 22px;
     text-align: center;
     margin-top: 10px;
+}
+
+@media (max-width: 650px) {
+    button {
+        width: 100% !important;
+    }
 }
